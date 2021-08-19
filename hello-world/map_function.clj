@@ -1,4 +1,4 @@
-(ns map)
+(ns map-function)
 
 (def prices [30 700 1000])
 
@@ -15,7 +15,7 @@
         valor-bruto))
 
 
-(println (map value-discounted prices))
+(println (map-function value-discounted prices))
 
 (println (range 10))
 (println (filter even? (range 10)))
@@ -23,7 +23,7 @@
 (println (filter apply-discount? prices))
 
 (println
-  (map value-discounted
-       (filter
+  (map-function value-discounted
+                (filter
          apply-discount?
          prices)))

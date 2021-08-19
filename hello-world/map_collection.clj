@@ -1,4 +1,4 @@
-(ns hashmap)
+(ns map-collection)/home/ztech
 
 (def inventory {"Bag" 10, "Wallet" 5})
 
@@ -22,7 +22,7 @@
 (println (:price (:bag order)))
 (println (update-in order [:bag :quantity] 3))
 
-;Threading
+;Threading First
 (println (-> order :bag :quantity))
 
 
