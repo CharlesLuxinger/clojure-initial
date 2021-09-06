@@ -1,4 +1,4 @@
-(ns map-collection)/home/ztech
+(ns map-collection)
 
 (def inventory {"Bag" 10, "Wallet" 5})
 
