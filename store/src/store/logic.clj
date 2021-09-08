@@ -28,4 +28,8 @@
 
 (defn resume-by-user-ordered-by-order-amount [orders]
   (->> orders
+       resume-by-user
        (sort-by :order-amount)))
+
+(defn resume-by-user-ordered-by-order-amount-reverse
+  (reverse resume-by-user-ordered-by-order-amount))

@@ -10,5 +10,10 @@
   (println "Ordered:" (sort-by :order-amount resume))
   (println "Order reversed:" (reverse (sort-by :order-amount resume)))
 
+  (println "First:" (first resume))
+  (println "Second:" (second resume))
+  (println "Fourth Element:" (nth resume 4))
+  (println "Only 2 Elements:" (take resume 2))
+
   (println (get-in orders [0 :items :bag :quantity])))
 
