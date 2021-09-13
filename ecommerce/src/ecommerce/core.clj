@@ -1,6 +1,11 @@
-(ns ecommerce.core)
+(ns ecommerce.core
+  (:require [datomic.api :as d]
+            [ecommerce.db :as db]
+            [ecommerce.model :as model]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(def conn (db/open-connection))
+
+(db/create-schema conn)
+
+(let [computer (model/new-product "New Computer", "/new_computer", 2500.1M)]
+  (d/transact conn [computer]))
