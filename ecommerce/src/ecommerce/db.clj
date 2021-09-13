@@ -26,3 +26,7 @@
 
 (defn create-schema [conn]
   (d/transact conn schema))
+
+(defn find-all-products [db]
+  (d/q '[:find ?entity
+         :where [?entity :product/name]] db))
