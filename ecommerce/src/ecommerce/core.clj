@@ -13,3 +13,5 @@
 (db/find-all-products (d/db conn))
 
 (db/find-by-slug (d/db conn) "/new-computer")
+
+(db/find-all (d/as-of (d/db conn) #inst "2021-10-01T17:12:00.200"))
