@@ -7,7 +7,9 @@
 
 (db/create-schema conn)
 
-(let [computer (model/new-product "New Computer", "/new_computer", 2500.1M)]
+(let [computer (model/new-product "New Computer", "/new-computer", 2500.1M)]
   (d/transact conn [computer]))
 
 (db/find-all-products (d/db conn))
+
+(db/find-by-slug (d/db conn) "/new-computer")

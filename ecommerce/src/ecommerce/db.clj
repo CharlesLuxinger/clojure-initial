@@ -28,5 +28,33 @@
   (d/transact conn schema))
 
 (defn find-all-products [db]
-  (d/q '[:find ?entity
+  (d/q '[:find (pull ?entity [:product/name :product/slug :product/price])
          :where [?entity :product/name]] db))
+
+(defn find-all-products-all-fields [db]
+  (d/q '[:find (pull ?entity [*])
+         :where [?entity :product/name]] db))
+
+(defn find-all [db]
+  (d/q '[:find ?name-bind ?price-bind
+         :keys product/name, product/price
+         :where [?entity :product/price ?price-bind]
+         [?entity :product/name ?name-bind]]
+       db))
+
+(defn find-by-slug [db slug]
+  (d/q '[:find ?entity
+         :in $ ?slug-bind  ;$ in db parameter
+         :where [?entity :product/slug ?slug-bind]]
+       db slug))
+
+(defn find-all-slug [db]
+  (d/q '[:find ?slug
+         :where [_ :product/slug ?slug]] db))
+
+(defn find-by-price [db price]
+  (d/q '[:find ?name-bind ?price-bind
+         :in $ ?price-bind  ;$ in db parameter
+         :where [?entity :product/price ?price-bind]
+                [?entity :product/name ?name-bind]]
+       db price))
